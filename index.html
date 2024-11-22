@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da Memória 2ºBim Luca Lee e Pietro Izar</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+    <form class="form-login">
+        <div class="cabe-login">
+            <img src="img/cérebro.jpg" alt="brain">
+            <br>
+            <h1>Jogo da Memória</h1>
+            <h2>Tematizado de Terraria</h2>
+        </div>
+        <input type="text" placeholder="Digite o seu Nome:" class="input-login">
+        <button type="submit" class="botão-login" disabled>Jogar</button>
+    </form>
+</body>
+<script>
+    const input = document.querySelector('.input-login');
+    const button = document.querySelector('.botão-login');
+    const form = document.querySelector('.form-login')
+
+    const validateInput = ({ target }) => {
+        if (target.value.length >   2) {
+            button.removeAttribute('disabled');
+        } else {
+            button.setAttribute('disabled', '');
+        }
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        localStorage.setItem('Jogador', input.value);
+        window.location = 'jogo.html';
+    }
+
+
+input.addEventListener('input', validateInput);
+form.addEventListener('submit', handleSubmit);
+</script>
+</html>
